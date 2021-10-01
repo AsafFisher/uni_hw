@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.mmn13_1.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <HBox>
+        <Label text="Question" fx:id="questionLabel"/>
+        <Region prefWidth="40.0" HBox.hgrow="ALWAYS" />
+        <Label fx:id="successLabel"/>
+    </HBox>
+
+    <fx:define>
+        <ToggleGroup fx:id="choices" />
+    </fx:define>
+    <RadioButton text="ans1" fx:id="a1">
+        <toggleGroup>
+        <fx:reference source="choices"/>
+        </toggleGroup>
+    </RadioButton>
+    <RadioButton text="ans2" fx:id="a2" >
+        <toggleGroup>
+            <fx:reference source="choices"/>
+        </toggleGroup>
+    </RadioButton>
+    <RadioButton text="ans3" fx:id="a3">
+        <toggleGroup>
+            <fx:reference source="choices"/>
+        </toggleGroup>
+    </RadioButton>
+    <RadioButton text="ans4" fx:id="a4">
+        <toggleGroup>
+            <fx:reference source="choices"/>
+        </toggleGroup>
+    </RadioButton>
+    <Button text="Next" fx:id="btnNext" onAction="#onNextBtnClick"/>
+</VBox>
