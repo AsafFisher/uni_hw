@@ -19,7 +19,6 @@ public class Airport {
     int runwayAmount;
     Object lock = new Object();
     // Map flightNumber to runwayNumber
-    ConcurrentHashMap<Integer, Integer> concurrentHashMap = new ConcurrentHashMap();
     ConcurrentLinkedQueue<Integer> departingQueue = new ConcurrentLinkedQueue<>();
     ConcurrentLinkedQueue<Integer> landingQueue = new ConcurrentLinkedQueue<>();
 
@@ -33,12 +32,11 @@ public class Airport {
         departingQueue.add(flightNumber);
         System.out.println(String.format("AD FLIGHT(%d) is asking for departure in %s", flightNumber, this.name));
         return acquireFreeRunwayBlocking(flightNumber, RunwayType.Departing);
-        //System.out.println(String.format("Flight(%d) departing from %s in %d", flightNumber, this.name, a));
     }
 
     public int land(int flightNumber) {
-        System.out.println(String.format("AL FLIGHT(%d) is asking for landing in %s", flightNumber, this.name));
         landingQueue.add(flightNumber);
+        System.out.println(String.format("AL FLIGHT(%d) is asking for landing in %s", flightNumber, this.name));
         return acquireFreeRunwayBlocking(flightNumber, RunwayType.Landing);
     }
 
